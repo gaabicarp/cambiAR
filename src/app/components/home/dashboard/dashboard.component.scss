@@ -1,0 +1,20 @@
+.dashboard{
+    .saldo-container{
+        width: 60%;
+        margin: auto;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .table-container{
+        width: 70%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        .table{
+            width: 100%;
+        }
+    }
+}

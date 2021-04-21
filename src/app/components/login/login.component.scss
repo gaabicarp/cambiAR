@@ -1,0 +1,23 @@
+@import "~bulma/sass/utilities/_all.sass";
+
+.login{
+    background-color: black;
+    background-image: url(../../../assets/img/login-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .title{
+        font-size: 5rem;
+    }
+    .form-container{
+        width: 30%;
+        height: 25em;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
