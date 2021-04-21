@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   login(): void{
     if (this.loginForm.controls.usuario.value === this.loginForm.controls.password.value){
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('home/dashboard');
     }
   }
 
