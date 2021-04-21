@@ -3,7 +3,7 @@
         <nav class="navbar is-warning">
             <div class="navbar-brand">
                 <div class="navbar-item">
-                    <p>cambiAR</p>
+                    <p class="title has-text-centered has-text-weight-bold">CambiAR</p>
                 </div>
                 <div class="navbar-burger" data-target="navMenuColorwarning-example">
                     <span></span>
@@ -14,13 +14,10 @@
       
             <div id="navMenuColorwarning-example" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item">
+                    <a class="navbar-item" routerLink='dashboard'>
                         Home
                     </a>
-                    <a class="navbar-item">
-                        Comprar divisas
-                    </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" routerLink='billetera'>
                         Billetera Virtual
                     </a>
                 </div>
@@ -29,10 +26,7 @@
                     <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
-                            <button class="button is-warning is-light">Depositar</button>
-                        </p>
-                        <p class="control">
-                            <button class="button is-success is-light">Mi Perfil</button>
+                            <button class="button is-success is-light" routerLink='perfil'>Mi Perfil</button>
                         </p>
                     </div>
                     </div>
@@ -40,5 +34,53 @@
             </div>
         </nav>
     </div>
+    <nav class="navbar is-black">
+        <div class="subnavbar is-flex is-justify-content-space-around py-3">
+            <div class="is-flex is-justify-content-space-around">
+                <div class="flag-container">
+                    <img src="../../../assets/flags/estados-unidos.svg" alt="">
+                </div>
+                <div class="ml-3">
+                    <p>USD</p>
+                    <p>ARS {{ (1 / divisas[0]) * divisas[5] | number:'1.1-2' }}</p>
+                </div>
+            </div>
+            <div class="is-flex is-justify-content-space-around">
+                <div class="flag-container">
+                    <img src="../../../assets/flags/union-europea.svg" alt="">
+                </div>
+                <div class="ml-3">
+                    <p>EUR</p>
+                    <p>ARS {{ (1 / divisas[1]) * divisas[5] | number:'1.1-2' }}</p>
+                </div>
+            </div>
+            <div class="is-flex is-justify-content-space-around">
+                <div class="flag-container">
+                    <img src="../../../assets/flags/brasil.svg" alt="">
+                </div>
+                <div class="ml-3">
+                    <p>BRL</p>
+                    <p>ARS {{ (1 / divisas[4]) * divisas[5] | number:'1.1-2' }}</p>
+                </div>
+            </div>
+            <div class="is-flex is-justify-content-space-around">
+                <div class="flag-container">
+                    <img src="../../../assets/flags/bitcoin.svg" alt="">
+                </div>
+                <div class="ml-3">
+                    <p>BTC</p>
+                    <p>ARS {{ (1 / divisas[2]) * divisas[5] | number:'1.1-2' }}</p>
+                </div>
+            </div>
+            <div class="is-flex is-justify-content-space-around">
+                <div class="flag-container">
+                    <img src="../../../assets/flags/japon.svg" alt="">
+                </div>
+                <div class="ml-3">
+                    <p>JPY</p>
+                    <p>ARS {{ (1 / divisas[3]) * divisas[5] | number:'1.1-2' }}</p>
+                </div>
+            </div>
+        </div>
+    </nav>
     <router-outlet></router-outlet>
-</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario.model';
+import { BilleteraService } from 'src/app/service/billetera.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private billeteraService: BilleteraService) { }
 
 
   ngOnInit(): void {
@@ -30,6 +32,14 @@ export class LoginComponent implements OnInit {
 
   login(): void{
     if (this.loginForm.controls.usuario.value === this.loginForm.controls.password.value){
+      const obj: Usuario = {
+        nombreCompleto: 'Usuario de Prueba',
+        dni: 12312312,
+        cuit: '12-12312312-12',
+        direccion: 'Calle Falsa 123',
+        cuentas: [{codigo: 'ARS', saldo: 0}]
+      };
+      localStorage.setItem('Usuario', JSON.stringify(obj));
       this.router.navigateByUrl('home/dashboard');
     }
   }

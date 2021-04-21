@@ -1,4 +1,16 @@
 .home{
-    height: 100vh;
+    min-height: 100vh;
     background-color: #4a4a4a;
+    .title{
+        font-family: 'Asap', sans-serif;
+    }
+
+    .flag-container{
+        img{
+            width: 50px;
+        }
+    }
+    .subnavbar{
+        width: 100%;
+    }
 }

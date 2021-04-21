@@ -1,140 +1,68 @@
 <div class="dashboard">
-    <nav class="navbar is-black">
-        <div class="is-flex is-justify-content-space-around">
-            <div class="is-flex is-justify-content-space-around">
-                <div class="flag-container">
-                    <img src="../../../../assets/flags/estados-unidos.svg" alt="">
-                </div>
-                <div>
-                    <p>USD</p>
-                    <p>ARS 150.05</p>
-                </div>
-            </div>
-            <div class="is-flex is-justify-content-space-around">
-                <div class="flag-container">
-                    <img src="../../../../assets/flags/estados-unidos.svg" alt="">
-                </div>
-                <div>
-                    <p>USD</p>
-                    <p>ARS 150.05</p>
-                </div>
-            </div>
-            <div class="is-flex is-justify-content-space-around">
-                <div class="flag-container">
-                    <img src="../../../../assets/flags/estados-unidos.svg" alt="">
-                </div>
-                <div>
-                    <p>USD</p>
-                    <p>ARS 150.05</p>
-                </div>
-            </div>
-            <div class="is-flex is-justify-content-space-around">
-                <div class="flag-container">
-                    <img src="../../../../assets/flags/estados-unidos.svg" alt="">
-                </div>
-                <div>
-                    <p>USD</p>
-                    <p>ARS 150.05</p>
-                </div>
-            </div>
-            <div class="is-flex is-justify-content-space-around">
-                <div class="flag-container">
-                    <img src="../../../../assets/flags/estados-unidos.svg" alt="">
-                </div>
-                <div>
-                    <p>USD</p>
-                    <p>ARS 150.05</p>
-                </div>
-            </div>
-        </div>
-    </nav>
     <div class="container">
-        <div class="box saldo-container mt-5 is-flex is-justify-content-space-around">
-            <p class="is-size-2">Balance de billetera:</p> 
-            <p class="is-size-2">ARS $12312.1323</p>  
-        </div>
-        <div class="box my-5">
-            <p class="is-size-3">Resumen de tus cuentas</p>
-            <div class="table-container">
-                <table class="table is-hoverable">
-                    <thead>
-                      <tr>
-                        <th>Nombre</th>
-                        <th>Total</th>
-                        <th>Total en pesos</th>
-                        <th>Acciones</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                          <th>USD</th>
-                          <td>132</td>
-                          <td>ARS 3213</td>
-                          <td>
-                            <div>
-                                <button class="button is-success is-inverted">Comprar</button>
-                                <button class="button is-success is-inverted">Vender</button>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                          <th>BTC</th>
-                          <td>0.0032</td>
-                          <td>ARS 38000</td>
-                          <td>
-                            <div>
-                                <button class="button is-success is-inverted">Comprar</button>
-                                <button class="button is-success is-inverted">Vender</button>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                          <th>EUR</th>
-                          <td>320</td>
-                          <td>ARS 32223</td>
-                          <td>
-                              <div>
-                                  <button class="button is-success is-inverted">Comprar</button>
-                                  <button class="button is-success is-inverted">Vender</button>
-                              </div>
-                          </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="box saldo-container">
+            <h3 class="is-size-1 has-text-centered mb-5">Bienvenido, {{user.nombreCompleto}}</h3>
+            <div class="balance-container">
+                <div class="is-flex is-justify-content-space-between">
+                    <p class="is-size-2 has">Cuenta en pesos:</p> 
+                    <p class="is-size-2">ARS ${{user.cuentas[0].saldo}}</p> 
+                </div>
+            </div>
+            <div class="has-text-centered my-2">
+                <button class="button is-warning" (click)="abrirModal()">Depositar</button>
             </div>
         </div>
-        <div class="box my-5">
-            <p class="is-size-3">Principales Divisas Activas</p>
-            <div class="is-flex is-justify-content-space-around	mt-5">
-                <div class="box has-text-centered">
-                    <p>USD</p>
-                    <p>150.32</p>
-                    <button class="button is-warning">Comprar</button>
+        <div class="box">
+            <h3 class="is-size-3 has-text-centered">Comprar/Vender Monedas</h3>
+            <div class="m-5">
+                <p>Desde:</p>
+                <div class="select is-fullwidth my-5">
+                    <select [(ngModel)]="cuentaDesde">
+                        <option *ngFor="let cuenta of user.cuentas" [ngValue]="cuenta">CUENTA EN {{cuenta.codigo}}</option>
+                    </select>
                 </div>
-                <div class="box has-text-centered">
-                    <p>EUR</p>
-                    <p>150.32</p>
-                    <button class="button is-warning">Comprar</button>
+                <p>A:</p>
+                <div class="select is-fullwidth my-5">
+                    <select #selectElem (change)="setCuentaHacia(selectElem.value)">
+                        <option *ngFor="let key of nombresDivisas">{{key}}</option>
+                    </select>
                 </div>
-                <div class="box has-text-centered">
-                    <p>BRL</p>
-                    <p>150.32</p>
-                    <button class="button is-warning">Comprar</button>
+            </div>
+            <div class="info-container has-text-centered">
+                <div class="is-flex is-justify-content-space-between my-3">
+                    <p class="is-size-4 has">Disponible en cuenta:</p> 
+                    <p class="is-size-4">{{cuentaDesde? cuentaDesde.codigo + cuentaDesde.saldo : '-'}}</p> 
                 </div>
-                <div class="box has-text-centered">
-                    <p>BTC</p>
-                    <p>150.32</p>
-                    <button class="button is-warning">Comprar</button>
+                <div class="is-flex is-justify-content-space-between my-3">
+                    <p class="is-size-4 has">Precio:</p> 
+                    <p class="is-size-4">{{obj? '1 ' + obj.nombre + ' = ' + cuentaDesde.codigo + ' ' + obj.valor.toFixed(3) : '-'}}</p> 
                 </div>
-                <div class="box has-text-centered">
-                    <p>AUD</p>
-                    <p>150.32</p>
-                    <button class="button is-warning">Comprar</button>
+                <input class="input" type="number" placeholder="Cantidad" min="0" max="cuentaDesde.saldo" [(ngModel)]="cantidadCambio">
+                <div class="is-flex is-justify-content-space-between my-3">
+                    <p class="is-size-4 has">TOTAL:</p> 
+                    <p class="is-size-4">{{(obj && cantidadCambio > 0 ? obj.nombre + ' ' + (cantidadCambio / obj.valor).toFixed(2)  : '-') }}</p> 
                 </div>
             </div>
             <div class="has-text-centered">
-                <button class="button is-warning ">Ver Mas</button>
+                <button class="button is-success is-large" (click)="comprar()">Comprar</button>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-background is-flex is-align-items-center	">
+        <div class="modal-content">
+            <div class="card p-5">
+                <h4 class="is-size-4 has-text-info-dark mb-2">Depositar Pesos</h4>
+                <div class="control">
+                    <input class="input is-focused" type="number" placeholder="Cantidad" [(ngModel)]="deposito">
+                  </div>
+                <button class="button is-warning mt-4" (click)="depositar()">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" (click)="cerrarModal()"></button>
     </div>
 </div>

@@ -1,1 +1,29 @@
-<p>billetera works!</p>
+<div class="billetera">
+    <div class="container">
+        <div class="box">
+            <h3 class="is-size-2 has-text-centered mb-5">Tu billetera virtual</h3>
+            <div class="table-container">
+                <table class="table is-hoverable">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Total</th>
+                        <th class="has-text-centered">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let cuenta of cuentas'>
+                          <th>{{cuenta.codigo}}</th>
+                          <td>{{cuenta.saldo}}</td>
+                          <td>
+                            <div>
+                                <button class="button is-success is-inverted" routerLink='../dashboard'>Comprar/Vender</button>
+                            </div>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
